@@ -20,7 +20,6 @@ const SignUpForm = () => {
   const { toast } = useToast()
   const {mutateAsync: createSessionLogin } = useSignInAccountMutation()
   const navigate = useNavigate()
-  console.log(isUserLoading)
 
   const form = useForm<z.infer<typeof SignInValidation>>({
     resolver: zodResolver(SignInValidation),
