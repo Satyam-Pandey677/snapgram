@@ -8,7 +8,7 @@ import { useState,useEffect } from 'react'
 
 const Explore = () => {
   const {ref, inView} = useInView()
-  const {data:posts, fetchNextPage, hasNextpage } = useGetPost();
+  const {data:posts, fetchNextPage, hasNextPage } = useGetPost();
 
   const [searchValue, setSearchValue] = useState("")
   const debouncedValue = useDebounce(searchValue,500)
@@ -66,7 +66,7 @@ const Explore = () => {
 
        <div className='flex flex-wrap gap-9 w-full max-w-5xl '>
         {shouldShowSearchResult ? (
-          <Searchresult isSearchFetching = {isSeachFeching} searchPosts = {searchPost}/>
+          <Searchresult isSearchFetching = {isSeachFeching} searchPosts = {searchPost?.documents ?? []}/>
         ):shouldShowPost? (
           <p className='text-light-4 text-center w-full'>End of post</p>
         ): posts.pages.map((item,index) => (
@@ -75,7 +75,7 @@ const Explore = () => {
       </div> 
 
       {
-        hasNextpage && !searchValue && (
+        hasNextPage && !searchValue && (
           <div ref={ref} className='mt-10'>
             <Loader/>
           </div>

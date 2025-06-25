@@ -2,7 +2,7 @@ import Loader from '@/components/shared/Loader'
 import UserCard from '@/components/shared/UserCard'
 import { toast } from '@/hooks/use-toast'
 import { useGetUser } from '@/lib/react_query/queryandmutations'
-import React from 'react'
+
 
 const AllUsers = () => {
   const{data: creators, isLoading, isError:isErrorCreators} = useGetUser()
