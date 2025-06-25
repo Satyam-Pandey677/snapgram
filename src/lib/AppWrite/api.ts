@@ -295,11 +295,13 @@ export async function updatePost(post : IUpdatePost) {
             const uploadedFile = await uploadFile(post.file[0])
             if(!uploadedFile) throw Error
 
-            const fileUrl = getFilePreview(uploadedFile.$id);
-            if (!fileUrl) {
-            await deleteFile(uploadedFile.$id);
-            throw Error;
+            const fileUrlString = getFilePreview(uploadedFile.$id);
+            if (!fileUrlString) {
+                await deleteFile(uploadedFile.$id);
+                throw Error;
             }
+
+            const fileUrl =new URL(fileUrlString)
     
 
             image = {...image, imageUrl: fileUrl, imageId: uploadedFile.$id }
