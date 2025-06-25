@@ -126,7 +126,7 @@ const SignUpForm = () => {
         />
         
         <Button type="submit" className="shad-button_primary mt-2">
-          {isCreatingUSer ? (
+          {isCreatingUSer || isSigningIn || isUserLoading? (
             <div className="flex-center gap-2"> <Loader/> Loading...</div>
           ): "Sign Up"}
         </Button>
